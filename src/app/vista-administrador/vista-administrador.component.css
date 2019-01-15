@@ -1,0 +1,112 @@
+/* VistaPrincipalComponent's private CSS styles */
+.titulo{
+    cursor: pointer;
+    border: none;
+    font: normal 400%/normal Arial Black, Gadget, sans-serif;
+    color: #bf0b25;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 0 1px 0 rgba(94,76,76,1) , 0 2px 0 rgba(96,50,50,1) , 0 3px 0 rgba(28,21,21,1) , 0 4px 0 rgba(7,6,6,1) , 0 5px 0 rgba(12,1,1,1) , 0 6px 1px rgba(0,0,0,0.0980392) , 0 0 5px rgba(0,0,0,0.0980392) , 0 1px 3px rgba(68,27,27,0.29) , 0 3px 5px rgba(0,0,0,0.2) , 0 5px 10px rgba(0,0,0,0.247059) , 0 10px 10px rgba(0,0,0,0.2) , 0 20px 20px rgba(0,0,0,0.14902) ;
+    -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+.example-header-image {
+    background-image: url("../images/percy.jpg");
+    background-size: cover;
+}
+.des { /*Lista desafios creo*/
+    margin-top: 4%;
+    margin-left: 10%;
+
+}
+input.tit{
+    min-height: 2em;
+    width: 20em;
+    margin-top: 20px;
+    font-size: 1em;
+    padding-left: .4em;
+}
+textarea.desc{
+    font-size: medium;
+    margin-top: 2em;
+    height: 8em;
+
+}
+button.post { /*Botón publicar*/
+    background-color: #bf0b25;
+    color: rgb(255, 255, 255);
+    border: none;
+    height: 3em;
+    width: 10em;
+    margin-top: 1%;
+    margin-left: 80%;
+    font-size: medium;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    cursor: hand;
+    font-family: Arial;
+}
+
+button:hover {
+    background-color: #cfd8dc;
+}
+
+button.delete { /*Boton eliminar*/
+    position: relative;
+    left: 330px;
+    top: -36px;
+    border: none;
+
+    background-color: gray !important;
+    color: white;
+    border-radius: 10px;
+    font-family: Arial;
+    padding: 7px 10px;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    width: 50%;
+    height: 10%;
+}
+
+.example-user-input {
+    margin-right: 0%;
+}
+.porfa{
+    display: flex;
+    flex-direction: row;
+}
+
+.example-card{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5em;
+    width: 200%;
+    max-width: 300%;
+    color: #bf0b25;
+    background-color: rgba(190, 187, 187, 0.24);
+    max-width: 280%;
+    max-height: 280%;
+    max-lines: 280;
+    word-wrap:break-word;
+}
+.lista-ideas{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    max-width: 30%;
+    margin-right: 50%;
+}
+.test{
+    margin-top: 25%
+}
+.descripcion{
+    margin-top: .5%;
+}
+

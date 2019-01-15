@@ -1,0 +1,67 @@
+<div class="porfa">
+<div class="example-container">  
+    <mat-form-field>
+        <input class="tit" #ideaName matInput  matInput maxlength="100" placeholder="Titulo Idea">
+        <mat-hint align="end">{{ideaName.value.length}} / 100</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Idea Libre">
+          <mat-option *ngFor="let clas of clasif" [value]="clas.value">
+            {{clas.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="end">Ingrese si su idea pertenece a un desafio ^</mat-hint>
+      </mat-form-field>
+    
+  <mat-form-field>
+    <textarea class="desc" #ideaDesc  matInput maxlength="280" placeholder="Descripcion Idea"></textarea>
+    <mat-hint align="end">{{ideaDesc.value.length}} / 280</mat-hint>
+  </mat-form-field>
+  <div> 
+      <button class="post" mat-raised-button (click)="add(ideaName.value,ideaDesc.value); ideaName.value=''; ideaDesc.value=''">
+      Publicar</button>
+      </div>
+    </div>
+  </div>
+
+<div class="lista-ideas">
+<ul>
+  <li *ngFor="let idea of ideas">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+    <a routerLink="/idea/{{idea.id}}">
+
+        <mat-card-title>{{ idea.titulo}}</mat-card-title>
+        <mat-card-subtitle><!--{{hero.autor}}-->Autor</mat-card-subtitle>
+    </a>
+      </mat-card-header>
+      <mat-card-content class="descripcion">
+        <p>
+          {{idea.descripcion}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKES</button>
+             <button class="like" mat-icon-button (click)="onClickMe()">
+               <mat-icon>favorite</mat-icon></button>{{idea.meGusta}}
+      </mat-card-actions>
+    </mat-card>
+  </li>
+</ul>
+</div>
+
+
+
+
+<!--</div>
+<div class="des">
+    <ul class="heroes">
+        <li *ngFor="let desafio of desafios" (click)="onSelect(desafio)">
+          <span class="badge">{{desafio.id}}</span> {{desafio.titulo}}
+        </li>
+      </ul>
+    </div>
+</div>-->
+
