@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Idea } from '../idea';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { IdeaService }  from '../idea.service';
+import {Idea,Comentario, IdeaService }  from '../idea.service';
 
 
 @Component({
@@ -38,5 +37,15 @@ export class IdeaComponent implements OnInit {
   onClickMe() {
     this.clickMessage = 'You are my idea!';
   }
+  addComentario(comentario:string,idIdea:string): void {
+    let nombreIdeador: string = "autorcito";
+    comentario = comentario.trim();
 
+    if (!nombreIdeador || !comentario ) { return; }
+    this.ideaService.addComentario({nombreIdeador,comentario} as Comentario,idIdea);
+      /*.subscribe(idea => {
+        this.ideas.push(idea);
+      });*/
+  }
 }
+

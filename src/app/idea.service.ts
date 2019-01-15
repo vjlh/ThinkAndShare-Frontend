@@ -12,7 +12,10 @@ export interface Idea {
   nombreIdeador: string;
   idDesafio: number;
 }
-
+export interface Comentario{
+  nombreIdeador: string;
+  comentario: string;
+}
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -21,6 +24,7 @@ const httpOptions = {
 export class IdeaService {
   private ideaUrl = 'http://127.0.0.1:8080/api/idea';
   private ideasUrl = 'http://127.0.0.1:8080/api/ideas';
+  private apiUrl = 'http://127.0.0.1:8080/api';
 
   constructor(
     private http: HttpClient,
@@ -32,7 +36,7 @@ export class IdeaService {
     return this.http.get('//localhost:8080/api/ideas');
   }
 
-  /** AQUI ESTA EL ERROR, FALLA EN EL CRUD GET idea by id. Will 404 if id not found */
+  /** idea by id. Will 404 if id not found */
   getIdea(id: String): Observable<Idea> {
     const url = `${this.ideaUrl}/${id}`;
     
@@ -41,6 +45,11 @@ export class IdeaService {
   }
   public addIdea (idea: Idea): Observable<Idea> {
     return this.http.post<Idea>(this.ideasUrl, idea);
+  }
+  
+  public addComentario(comentario: Comentario,id:string): Observable<Idea>{
+    const url = `http://127.0.0.1:8080/api/${id}/comentar`;
+    return this.http.put<Idea>(url,comentario);
   }
 
   /**
