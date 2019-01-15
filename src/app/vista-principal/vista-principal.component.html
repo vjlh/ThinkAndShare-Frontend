@@ -41,6 +41,7 @@
         <p>
           {{idea.descripcion}}
         </p>
+        
       </mat-card-content>
       <mat-card-actions>
         <button mat-button (click)="meGusta(idea.id,idea)">LIKES</button>
@@ -51,6 +52,18 @@
   </li>
 </ul>
 </div>
+
+<button mat-button (click)="filtrar(filtro.value)">LIKES</button>
+<mat-form-field>
+  <input class="tit" #filtro matInput  matInput maxlength="100" placeholder="Titulo Idea">
+  <mat-hint align="end">{{filtro.value.length}} / 100</mat-hint>
+</mat-form-field>
+
+<button mat-button (click)="order(ordenar.value)">LIKES</button>
+<mat-form-field>
+  <input class="tit" #ordenar matInput  matInput maxlength="100" placeholder="Titulo Idea">
+  <mat-hint align="end">{{ordenar.value.length}} / 100</mat-hint>
+</mat-form-field>
 
 
 
