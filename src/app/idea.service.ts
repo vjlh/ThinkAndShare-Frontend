@@ -25,6 +25,7 @@ export class IdeaService {
   private ideaUrl = 'http://127.0.0.1:8080/api/idea';
   private ideasUrl = 'http://127.0.0.1:8080/api/ideas';
   private apiUrl = 'http://127.0.0.1:8080/api';
+  private pliz = 'localhost:8080/api/5c3e4da9bf1b3e0eafe8d040/comentar';
 
   constructor(
     private http: HttpClient,
@@ -48,8 +49,14 @@ export class IdeaService {
   }
   
   public addComentario(comentario: Comentario,id:string): Observable<Idea>{
-    const url = `http://127.0.0.1:8080/api/${id}/comentar`;
-    return this.http.put<Idea>(url,comentario);
+    const url = `${this.apiUrl}/${id}/comentar`;
+    return this.http.post<Idea>(url,comentario);
+  }
+
+  public meGusta(id:string): Observable<Idea>{
+    const url = `${this.apiUrl}/${id}/megusta`;
+    return this.http.post<Idea>(url,httpOptions);
+
   }
 
   /**
