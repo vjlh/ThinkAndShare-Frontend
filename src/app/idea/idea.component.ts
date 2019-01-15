@@ -34,15 +34,15 @@ export class IdeaComponent implements OnInit {
     this.location.back();
   }
 
-  onClickMe() {
-    this.clickMessage = 'You are my idea!';
+  meGusta(idIdea:string):void {
+    this.ideaService.meGusta(idIdea).subscribe(idea => this.idea = idea);
   }
   addComentario(comentario:string,idIdea:string): void {
     let nombreIdeador: string = "autorcito";
     comentario = comentario.trim();
 
     if (!nombreIdeador || !comentario ) { return; }
-    this.ideaService.addComentario({nombreIdeador,comentario} as Comentario,idIdea);
+    this.ideaService.addComentario({nombreIdeador,comentario} as Comentario,idIdea).subscribe();
       /*.subscribe(idea => {
         this.ideas.push(idea);
       });*/

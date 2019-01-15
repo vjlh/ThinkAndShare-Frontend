@@ -30,4 +30,9 @@ export class VistaPrincipalComponent implements OnInit {
         this.ideas.push(idea);
       });
   }
+  meGusta(idIdea:string) {
+    this.ideaService.meGusta(idIdea).subscribe();
+    this.ideaService.getIdeas()
+      .subscribe(ideas => this.ideas = ideas);
+  }
 }

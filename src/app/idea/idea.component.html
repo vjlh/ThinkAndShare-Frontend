@@ -13,8 +13,8 @@
             </p>
           </mat-card-content>
           <mat-card-actions class="test">
-              <button mat-button>LIKES</button>
-              <button class="like" mat-icon-button (click)="onClickMe()">
+              <button mat-button (click)="meGusta(idea.id)">LIKES</button>
+              <button class="like" mat-icon-button (click)="meGusta(idea.id)">
                   <mat-icon>favorite</mat-icon></button>{{idea.meGusta}}
           </mat-card-actions>
         </mat-card>
