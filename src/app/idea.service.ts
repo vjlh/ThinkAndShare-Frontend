@@ -2,11 +2,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
-import { Idea } from './idea';
-
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+
+export interface Idea {
+  titulo: string;
+  descripcion: string;
+  nombreIdeador: string;
+  idDesafio: number;
+}
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -34,11 +39,8 @@ export class IdeaService {
     return this.http.get<Idea>(url); /*.pipe(catchError(<Idea>(`getIdea id=${id}`))
      );*/
   }
-  addIdea (idea: Idea): Observable<Idea> {
-    return this.http.post<Idea>(this.ideasUrl, idea, httpOptions)/*.pipe(
-      tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
-      catchError(this.handleError<Hero>('addHero'))
-    );*/
+  public addIdea (idea: Idea): Observable<Idea> {
+    return this.http.post<Idea>(this.ideasUrl, idea);
   }
 
   /**
