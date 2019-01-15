@@ -58,6 +58,16 @@ export class IdeaService {
     return this.http.post<Idea>(url,httpOptions);
 
   }
+  public filter(filtro:string): Observable<any> {
+    const url = `${this.apiUrl}/ideas/filtrar/${filtro}`;
+    return this.http.get(url);    
+
+  }
+  public order(criterio:string): Observable<any> {
+    const url = `${this.apiUrl}/ideas/ordenar/${criterio}`;
+    return this.http.get(url);    
+
+  }
 
   /**
    * Handle Http operation that failed.

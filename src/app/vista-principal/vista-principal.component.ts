@@ -35,4 +35,12 @@ export class VistaPrincipalComponent implements OnInit {
     this.ideaService.getIdeas()
       .subscribe(ideas => this.ideas = ideas);
   }
+  filtrar(filtro:string){
+    this.ideaService.filter(filtro)
+      .subscribe(ideas => {this.ideas = ideas; console.log(this.ideas)});
+  }
+  order(criterio:string){
+    this.ideaService.order(criterio)
+      .subscribe(ideas => {this.ideas = ideas; console.log(this.ideas)});
+  }
 }
