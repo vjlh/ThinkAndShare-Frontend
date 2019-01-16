@@ -3,5 +3,4 @@ export class Idea {
     descripcion: string;
     nombreIdeador: string;
     idDesafio: number;
-
 }

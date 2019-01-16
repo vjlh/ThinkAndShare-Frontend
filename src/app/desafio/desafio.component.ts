@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Desafio } from '../desafio';
+import { Desafio } from '../services/desafio';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { DesafioService }  from '../desafio.service';
+import { DesafioService }  from '../services/desafio.service';
 
 
 @Component({

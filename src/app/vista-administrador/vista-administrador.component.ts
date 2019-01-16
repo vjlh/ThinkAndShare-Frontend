@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Idea, IdeaService } from '../idea.service';
-import { Desafio, DesafioService } from '../desafio.service';
+import { Idea, IdeaService } from '../services/idea.service';
+import { Desafio, DesafioService } from '../services/desafio.service';
 
 @Component({
   selector: 'app-vista-administrador',
@@ -11,7 +11,7 @@ import { Desafio, DesafioService } from '../desafio.service';
 export class VistaAdministradorComponent implements OnInit {
 
   ideas: Idea[];
-  desafios: Desafio[];  
+  desafios: Desafio[];
 
   constructor(private ideaService: IdeaService, private desafioService: DesafioService) { }
 
@@ -20,7 +20,7 @@ export class VistaAdministradorComponent implements OnInit {
       .subscribe(ideas => this.ideas = ideas);
       this.desafioService.getDesafios()
       .subscribe(desafios => this.desafios = desafios);
-      
+
   }
 
   add(titulo: string, descripcion: string): void {

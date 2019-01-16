@@ -1,27 +1,24 @@
-<!--<button (click)="goBack()">go back</button>-->
-<div class="zoom" *ngIf="idea">
-  <!--<button (click)="save()">save</button> -->
-  <mat-card class="example-card">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>{{idea.titulo}}</mat-card-title>
-            <mat-card-subtitle><!--{{hero.autor}}-->Autor</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <p>
-              {{idea.descripcion}}
-            </p>
-          </mat-card-content>
-          <mat-card-actions class="test">
-              <button mat-button (click)="meGusta(idea.id)">LIKES</button>
-              <button class="like" mat-icon-button (click)="meGusta(idea.id)">
-                  <mat-icon>favorite</mat-icon></button>{{idea.meGusta}}
-          </mat-card-actions>
-        </mat-card>
-
-          <mat-form-field class="algo">
-              <textarea #comentario class="coment" #comentario  matInput maxlength="280" placeholder="Ingrese su comentario"></textarea>
-              <mat-hint align="end">{{comentario.value.length}} / 280</mat-hint>
-          </mat-form-field>
-      <button class="post" mat-raised-button (click)="addComentario(comentario.value,idea.id);comentario.value = idea.id">Comentar</button>
-  </div>
+<div class="container" *ngIf="idea">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="card text-center">
+                <div class="card-header">
+                    {{idea.titulo}}
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{idea.descripcion}}</p>
+                </div>
+                <div class="card-footer text-muted">
+                    <button class="like" mat-icon-button (click)="meGusta(idea.id)">
+                        <mat-icon>favorite</mat-icon>
+                    </button>
+                    {{idea.meGusta}}
+                </div>
+            </div>
+            <div class="row contenido-comentarios">
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

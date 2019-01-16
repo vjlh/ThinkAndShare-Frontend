@@ -1,106 +1,172 @@
-<div class="porfa">
-<div class="example-container">  
-    <mat-form-field>
-        <input class="tit" #ideaName matInput  matInput maxlength="100" placeholder="Titulo Idea">
-        <mat-hint align="end">{{ideaName.value.length}} / 100</mat-hint>
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-select placeholder="Idea Libre">
-          <mat-option *ngFor="let clas of clasif" [value]="clas.value">
-            {{clas.viewValue}}
-          </mat-option>
-        </mat-select>
-        <mat-hint align="end">Ingrese si su idea pertenece a un desafio ^</mat-hint>
-      </mat-form-field>
-    
-  <mat-form-field>
-    <textarea class="desc" #ideaDesc  matInput maxlength="280" placeholder="Descripcion Idea"></textarea>
-    <mat-hint align="end">{{ideaDesc.value.length}} / 280</mat-hint>
-  </mat-form-field>
-  <div> 
-      <button class="post" mat-raised-button (click)="add(ideaName.value,ideaDesc.value); ideaName.value=''; ideaDesc.value=''">
-      Publicar</button>
-      </div>
+<div class="row">
+    <div class="col-md-12 publicar-idea">
+        <div class="row">
+            <div class="col-md-4"><h4>Publica una idea</h4></div>
+            <div class="col-md-8"></div>
+        </div>
+        <div class="row formulario">
+            <div class="col-md-12">
+                <form>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <input type="text" #titulo class="form-control" id="exampleFormControlInput1" placeholder="Introduzca el titulo de su idea">
+                        </div>
+                        <div class="col-md-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <textarea class="form-control entrada-descripcion" #descripcion id="exampleFormControlTextarea1" rows="3" placeholder="Introduzca la descripcion de su idea"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-11 d-flex flex-row-reverse">
+                            <button type="button" (click)="add(titulo.value,descripcion.value)"class="btn btn-danger">Publicar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
-
-<div class="lista-ideas">
-<ul>
-  <li *ngFor="let idea of ideas">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-    <a routerLink="/idea/{{idea.id}}">
-
-        <mat-card-title>{{ idea.titulo}}</mat-card-title>
-        <mat-card-subtitle><!--{{hero.autor}}-->Autor</mat-card-subtitle>
-    </a>
-      </mat-card-header>
-      <mat-card-content class="descripcion">
-        <p>
-          {{idea.descripcion}}
-        </p>
-        
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button (click)="meGusta(idea.id,idea)">LIKES</button>
-             <button class="like" mat-icon-button (click)="meGusta(idea.id,idea)">
-               <mat-icon>favorite</mat-icon></button>{{idea.meGusta}}
-      </mat-card-actions>
-    </mat-card>
-  </li>
-</ul>
 </div>
 
-<button mat-button (click)="filtrar(filtro.value)">LIKES</button>
-<mat-form-field>
-  <input class="tit" #filtro matInput  matInput maxlength="100" placeholder="Titulo Idea">
-  <mat-hint align="end">{{filtro.value.length}} / 100</mat-hint>
-</mat-form-field>
+<div class="row">
+    <div class="col-md-6">
+        <nav class="navbar justify-content-between">
+            <div class="btn-group">
+                <button class="btn btn-secondary btn-sm" type="button">
+                    Ordenar por
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" >Me gusta</a>
+                    <a class="dropdown-item" >Comentarios</a>
+                    <a class="dropdown-item" >Antiguedad</a>
+                </div>
+            </div>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" #filtro placeholder="Ingrese un termino" aria-label="Search">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" (click)="filtrar(filtro.value)">Filtrar</button>
+            </form>
+        </nav>
+    </div>
+    <div class="col-md-6">
 
-<button mat-button (click)="order(ordenar.value)">LIKES</button>
+    </div>
+    <div class="col-md-6 listado-ideas">
+        <div class="container fluid ideas">
+            <div *ngFor="let idea of ideas; let i = index">
+                <div class="row">
+                    <a href="#ideas-{{ i }}" class="btn btn-light btn-block d-flex flex-row" data-toggle="collapse">
+                        <p class="titulo">{{idea.titulo}}</p>
+                        <p class="nombre-ideador">[{{idea.nombreIdeador}}]</p>
+                    </a>
+                </div>
+                <div class="collapse row" id="ideas-{{ i }}">
+                    <div class="card card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{idea.descripcion}}
+                            </div>
+                            <div class="col-md-12 separado">
+                                <div class="row separado">
+                                    <div class="col-md-6">
+                                        <span class="badge badge-pill badge-danger">Me gusta: {{idea.meGusta}}</span>
+                                    </div>
+                                    <div class="col-md-6 d-flex flex-row-reverse">
+                                        <button type="button" class="btn btn-danger btn-sm" (click)="meGusta(idea.id,idea)">Dar me gusta</button>
+                                        <!-- <button type="button" class="btn btn-link btn-sm" routerLink="/idea/{{idea.id}}">ver mas</button> -->
+                                        <button type="button" class="btn btn-link btn-sm" (click)="seleccionarIdea(idea)" data-toggle="modal" data-target="#ideaModal">ver mas</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6 listado-desafios">
+        <div class="container fluid desafios">
+            <div *ngFor="let desafio of desafios; let i = index">
+                <div class="row">
+                    <a href="#desafios-{{ i }}" class="btn btn-light btn-block" data-toggle="collapse">{{desafio.titulo}}</a>
+                </div>
+                <div class="collapse row" id="desafios-{{ i }}">
+                    <div class="card card-body">
+                        {{desafio.descripcion}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" *ngIf="idea">
+    <div class="modal fade" id="ideaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{idea.titulo}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <p class="descripcion-modal">{{idea.descripcion}}</p>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <mat-icon class="icono-meGusta-modal">favorite</mat-icon>
+                        </div>
+                        <div class="col-md-5">
+                            <p class="meGusta-modal">{{idea.meGusta}}</p>
+                        </div>
+                        <div class="col-md-6 d-flex flex-row-reverse">
+                            <button type="button" class="btn btn-danger btn-sm boton-meGusta-modal" (click)="meGusta(idea.id,idea)">Dar me gusta</button>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control entrada-comentario-modal" #comentario placeholder="Ingrese un comentario" aria-label="comentario" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary boton-comentar-modal" (click)="addComentario(comentario.value,idea.id)" type="button">Comentar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="container fluid comentarios">
+                        <div *ngFor="let comentario of idea.comentarios">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="comentario-modal">{{comentario[0]}}</p>
+                                </div>
+                                <div class="col-md-6 d-flex flex-row-reverse">
+                                    <p class="autor-comentario-modal">[{{comentario[1]}}]</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <button mat-button (click)="order(ordenar.value)">LIKES</button>
 <mat-form-field>
   <input class="tit" #ordenar matInput  matInput maxlength="100" placeholder="Titulo Idea">
   <mat-hint align="end">{{ordenar.value.length}} / 100</mat-hint>
-</mat-form-field>
-
-
-<div class="lista-desafios">
-<ul>
-  <li *ngFor="let desafio of desafios">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-    <a routerLink="/desafio/{{desafio.id}}">
-
-        <mat-card-title>{{ desafio.titulo}}</mat-card-title>
-        <mat-card-subtitle><!--{{hero.autor}}-->Publicado por: </mat-card-subtitle>
-    </a>
-      </mat-card-header>
-      <mat-card-content class="descripcion">
-        <p>
-          {{desafio.descripcion}}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>FIN </button>
-             <button class="time" mat-icon-button (click)="onClickMe()">
-               <mat-icon>access_time</mat-icon></button>{{desafio.termino}}
-      </mat-card-actions>
-    </mat-card>
-  </li>
-</ul>
-</div>
-
-
-<!--</div>
-<div class="des">
-    <ul class="heroes">
-        <li *ngFor="let desafio of desafios" (click)="onSelect(desafio)">
-          <span class="badge">{{desafio.id}}</span> {{desafio.titulo}}
-        </li>
-      </ul>
-    </div>
-</div>-->
-
+</mat-form-field> -->

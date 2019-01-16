@@ -2,19 +2,21 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
-import { MessageService } from './message.service';
+import { MessageService } from '../message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-export interface Idea {
-  titulo: string;
-  descripcion: string;
-  nombreIdeador: string;
-  idDesafio: number;
-}
 export interface Comentario{
   nombreIdeador: string;
   comentario: string;
+}
+
+export interface Idea {
+    titulo: string;
+    descripcion: string;
+    nombreIdeador: string;
+    idDesafio: number;
+    comentarios: Comentario[];
 }
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -40,14 +42,14 @@ export class IdeaService {
   /** idea by id. Will 404 if id not found */
   getIdea(id: String): Observable<Idea> {
     const url = `${this.ideaUrl}/${id}`;
-    
+
     return this.http.get<Idea>(url); /*.pipe(catchError(<Idea>(`getIdea id=${id}`))
      );*/
   }
   public addIdea (idea: Idea): Observable<Idea> {
     return this.http.post<Idea>(this.ideasUrl, idea);
   }
-  
+
   public addComentario(comentario: Comentario,id:string): Observable<Idea>{
     const url = `${this.apiUrl}/${id}/comentar`;
     return this.http.post<Idea>(url,comentario);
@@ -60,12 +62,12 @@ export class IdeaService {
   }
   public filter(filtro:string): Observable<any> {
     const url = `${this.apiUrl}/ideas/filtrar/${filtro}`;
-    return this.http.get(url);    
+    return this.http.get(url);
 
   }
   public order(criterio:string): Observable<any> {
     const url = `${this.apiUrl}/ideas/ordenar/${criterio}`;
-    return this.http.get(url);    
+    return this.http.get(url);
 
   }
 
