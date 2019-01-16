@@ -103,6 +103,15 @@
     max-width: 30%;
     margin-right: 50%;
   }
+
+  .lista-desafios{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    max-width: 30%;
+    margin-right: 50%;
+  }
+
   .test{
     margin-top: 25%
   }

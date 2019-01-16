@@ -1,4 +1,8 @@
 /* Desafio's private CSS styles  */
+.example-header-image {
+  background-image: url("../images/erizo.jpg");
+  background-size: cover;
+}
 
 label {
     display: inline-block;
