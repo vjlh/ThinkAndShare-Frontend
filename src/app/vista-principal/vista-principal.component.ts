@@ -49,13 +49,15 @@ export class VistaPrincipalComponent implements OnInit {
       .subscribe(ideas => {this.ideas = ideas; console.log(this.ideas)});
   }
 
-  addDesafio(titulo: string, descripcion: string): void {
+  addDesafio(titulo: string, descripcion: string, inicio: string, termino: string): void {
     titulo = titulo.trim();
     descripcion = descripcion.trim();
-    if (!titulo || !descripcion ) { return; }
-    this.desafioService.addDesafio({titulo,descripcion} as Desafio)
+    inicio = inicio.trim();
+    termino = termino.trim();
+    if (!titulo || !descripcion || !inicio || !termino) { return; }
+    this.desafioService.addDesafio({titulo,descripcion,inicio,termino} as Desafio)
       .subscribe(desafio => {
-        this.desafio.push(desafio);
+        this.desafios.push(desafio);
       });
   }
 }

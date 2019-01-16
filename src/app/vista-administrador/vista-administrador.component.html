@@ -1,50 +1,98 @@
-<h2 class="titulo">Think & Share</h2>
-
 <div class="porfa">
-  <div class="example-container">
+<div class="example-container">  
     <mat-form-field>
-      <input class="tit" #desafioName matInput  matInput maxlength="100" placeholder="Titulo Desafio">
-      <mat-hint align="end">{{desafioName.value.length}} / 100</mat-hint>
+        <input class="tit" #desafioName matInput  matInput maxlength="100" placeholder="Titulo Desafio">
+        <mat-hint align="end">{{desafioName.value.length}} / 100</mat-hint>
+    </mat-form-field>
+    
+  <mat-form-field>
+    <textarea class="desc" #desafioesc  matInput maxlength="280" placeholder="Descripcion Desafío"></textarea>
+    <mat-hint align="end">{{desafioDesc.value.length}} / 280</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+        <input class="inic" #desafioInit matInput  matInput maxlength="30" placeholder="Fecha de inicio">
+        <mat-hint align="end">{{desafioInit.value.length}} / 30</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
-      <textarea class="desc" #desafioDesc  matInput maxlength="280" placeholder="Descripcion Desafio"></textarea>
-      <mat-hint align="end">{{desafioDesc.value.length}} / 280</mat-hint>
+        <input class="fini" #desafioEnd matInput  matInput maxlength="30" placeholder="Fecha de término">
+        <mat-hint align="end">{{desafioEnd.value.length}} / 30</mat-hint>
     </mat-form-field>
-    <div>
-      <button class="post" mat-raised-button (click)="add(desafioName.value,desafioDesc.value); desadioName.value=''; desafioDesc.value=''">
-        Publicar</button>
+  <div> 
+      <button class="post" mat-raised-button (click)="addDesafio(desafioName.value,desafioDesc.value,desafioInit.value,desafioEnd.value); desafioName.value=''; desafioDesc.value=''; desafioInit.value; desafioEnd.value">
+      Publicar desafío</button>
+      </div>
     </div>
   </div>
-</div>
 
 <div class="lista-ideas">
-  <ul>
-    <li *ngFor="let idea of ideas">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <a routerLink="/idea/{{idea.id}}">
+<ul>
+  <li *ngFor="let idea of ideas">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+    <a routerLink="/idea/{{idea.id}}">
 
-            <mat-card-title>{{ idea.titulo}}</mat-card-title>
-            <mat-card-subtitle><!--{{hero.autor}}-->Autor</mat-card-subtitle>
-          </a>
-        </mat-card-header>
-        <mat-card-content class="descripcion">
-          <p>
-            {{idea.descripcion}}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>LIKES</button>
-          <button class="like" mat-icon-button (click)="onClickMe()">
-            <mat-icon>favorite</mat-icon></button>{{idea.meGusta}}
-        </mat-card-actions>
-      </mat-card>
-    </li>
-  </ul>
+        <mat-card-title>{{ idea.titulo}}</mat-card-title>
+        <mat-card-subtitle><!--{{hero.autor}}-->Autor</mat-card-subtitle>
+    </a>
+      </mat-card-header>
+      <mat-card-content class="descripcion">
+        <p>
+          {{idea.descripcion}}
+        </p>
+        
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="meGusta(idea.id,idea)">LIKES</button>
+             <button class="like" mat-icon-button (click)="meGusta(idea.id,idea)">
+               <mat-icon>favorite</mat-icon></button>{{idea.meGusta}}
+      </mat-card-actions>
+    </mat-card>
+  </li>
+</ul>
 </div>
 
+<button mat-button (click)="filtrar(filtro.value)">LIKES</button>
+<mat-form-field>
+  <input class="tit" #filtro matInput  matInput maxlength="100" placeholder="Titulo Idea">
+  <mat-hint align="end">{{filtro.value.length}} / 100</mat-hint>
+</mat-form-field>
+
+<button mat-button (click)="order(ordenar.value)">LIKES</button>
+<mat-form-field>
+  <input class="tit" #ordenar matInput  matInput maxlength="100" placeholder="Titulo Idea">
+  <mat-hint align="end">{{ordenar.value.length}} / 100</mat-hint>
+</mat-form-field>
+
+
+<div class="lista-desafios">
+<ul>
+  <li *ngFor="let desafio of desafios">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+    <a routerLink="/desafio/{{desafio.id}}">
+
+        <mat-card-title>{{ desafio.titulo}}</mat-card-title>
+        <mat-card-subtitle><!--{{hero.autor}}-->Publicado por: </mat-card-subtitle>
+    </a>
+      </mat-card-header>
+      <mat-card-content class="descripcion">
+        <p>
+          {{desafio.descripcion}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>FIN </button>
+             <button class="time" mat-icon-button (click)="onClickMe()">
+               <mat-icon>access_time</mat-icon></button>{{desafio.termino}}
+      </mat-card-actions>
+    </mat-card>
+  </li>
+</ul>
+</div>
 
 
 <!--</div>
@@ -56,4 +104,3 @@
       </ul>
     </div>
 </div>-->
-

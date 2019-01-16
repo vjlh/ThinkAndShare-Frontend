@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { IdeaComponent } from './idea/idea.component'; // <-- NgModel lives here
 import { IdeaService } from './idea.service';
+import { DesafioComponent } from './desafio/desafio.component';
 import { DesafioService } from './desafio.service';
 import { MessageService } from './message.service';
 
 import { HttpClientModule }    from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { VistaPrincipalComponent } from './vista-principal/vista-principal.component';
+import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -46,8 +48,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
-import { DesafioComponent } from './desafio/desafio.component';
+
 
 
 @NgModule({

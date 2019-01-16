@@ -9,8 +9,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 export interface Desafio {
   titulo: string;
   descripcion: string;
-  inicio: Date;
-  termiino: Date;
+  inicio: string;
+  termino: string;
 }
 
 const httpOptions = {
@@ -21,6 +21,7 @@ const httpOptions = {
 export class DesafioService {
     private desafioUrl = 'http://127.0.0.1:8080/api/desafio';
     private desafiosUrl = 'http://127.0.0.1:8080/api/desafios';
+      private apiUrl = 'http://127.0.0.1:8080/api';
 
     constructor(
         private http: HttpClient,
@@ -32,9 +33,9 @@ export class DesafioService {
         return this.http.get('//localhost:8080/api/desafios');
     }
 
-    /** AQUI ESTA EL ERROR, FALLA EN EL CRUD GET desafio by id. Will 404 if id not found */
+    /** desafio by id. Will 404 if id not found */
     getDesafio(id: String): Observable<Desafio> {
-        const url = `${this.desafiosUrl}/${id}`;
+        const url = `${this.desafioUrl}/${id}`;
 
         return this.http.get<Desafio>(url); /*.pipe(catchError(<Desafio>(`getDesafio id=${id}`))
      );*/
