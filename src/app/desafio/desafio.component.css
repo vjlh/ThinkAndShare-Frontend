@@ -1,0 +1,52 @@
+/* Desafio's private CSS styles  */
+
+label {
+    display: inline-block;
+    width: 3em;
+    margin: .5em 0;
+    color: #607D8B;
+    font-weight: bold;
+  }
+  input {
+    min-height: 2em;
+    width: 80%;
+    height:10%;
+    margin-top: 20px;
+    font-size: 1em;
+    padding-left: .4em;
+  }
+  button {
+    margin-top: 20px;
+    font-family: Arial;
+    background-color: #eee;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer; cursor: hand;
+  }
+  button:hover {
+    background-color: #cfd8dc;
+  }
+  button:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
+  }
+  button.time {
+    color:#bf0b25;
+    margin-right: .2em;
+    background-color: #ffffff00;
+
+  }
+  .example-card{
+    margin-top: 3%;
+    width: 40%;
+    background-color: rgba(190, 187, 187, 0.24);
+    height: 25em;
+    max-height: 25em;
+    word-wrap:break-word;
+
+  }
+  .test{
+    margin-top: 20%
+  }

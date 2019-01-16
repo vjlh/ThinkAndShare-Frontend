@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Idea, IdeaService } from '../idea.service';
+import { Desafio, DesafioService } from '../desafio.service';
 
 @Component({
   selector: 'app-vista-principal',
@@ -10,12 +11,16 @@ import { Idea, IdeaService } from '../idea.service';
 export class VistaPrincipalComponent implements OnInit {
 
   ideas: Idea[];
+  desafios: Desafio[];  
 
-  constructor(private ideaService: IdeaService) { }
+  constructor(private ideaService: IdeaService, private desafioService: DesafioService) { }
 
   ngOnInit() {
       this.ideaService.getIdeas()
       .subscribe(ideas => this.ideas = ideas);
+      this.desafioService.getDesafios()
+      .subscribe(desafios => this.desafios = desafios);
+      
   }
 
   add(titulo: string, descripcion: string): void {
@@ -42,5 +47,15 @@ export class VistaPrincipalComponent implements OnInit {
   order(criterio:string){
     this.ideaService.order(criterio)
       .subscribe(ideas => {this.ideas = ideas; console.log(this.ideas)});
+  }
+
+  addDesafio(titulo: string, descripcion: string): void {
+    titulo = titulo.trim();
+    descripcion = descripcion.trim();
+    if (!titulo || !descripcion ) { return; }
+    this.desafioService.addDesafio({titulo,descripcion} as Desafio)
+      .subscribe(desafio => {
+        this.desafio.push(desafio);
+      });
   }
 }

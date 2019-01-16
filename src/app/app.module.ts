@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { IdeaComponent } from './idea/idea.component'; // <-- NgModel lives here
 import { IdeaService } from './idea.service';
+import { DesafioService } from './desafio.service';
 import { MessageService } from './message.service';
 
 import { HttpClientModule }    from '@angular/common/http';
@@ -46,7 +47,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { VistaAdministradorComponent } from './vista-administrador/vista-administrador.component';
-
+import { DesafioComponent } from './desafio/desafio.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { VistaAdministradorComponent } from './vista-administrador/vista-adminis
     AppComponent,
     IdeaComponent,
     VistaPrincipalComponent,
-    VistaAdministradorComponent
+    VistaAdministradorComponent,
+    DesafioComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +101,8 @@ import { VistaAdministradorComponent } from './vista-administrador/vista-adminis
   ],
 
   providers: [
-    IdeaService
+    IdeaService,
+    DesafioService
   ],
   bootstrap: [AppComponent]
 

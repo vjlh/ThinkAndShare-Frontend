@@ -2,11 +2,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
-import { Desafio } from './desafio';
-
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+
+export interface Desafio {
+  titulo: string;
+  descripcion: string;
+  inicio: Date;
+  termiino: Date;
+}
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,7 +19,8 @@ const httpOptions = {
 
 @Injectable()
 export class DesafioService {
-    private desafiosUrl = 'http://127.0.0.1:8080/api/desafio';
+    private desafioUrl = 'http://127.0.0.1:8080/api/desafio';
+    private desafiosUrl = 'http://127.0.0.1:8080/api/desafios';
 
     constructor(
         private http: HttpClient,
@@ -32,8 +38,10 @@ export class DesafioService {
 
         return this.http.get<Desafio>(url); /*.pipe(catchError(<Desafio>(`getDesafio id=${id}`))
      );*/
-
     }
+    public addDesafio (desafio: Desafio): Observable<Desafio> {
+      return this.http.post<Desafio>(this.desafiosUrl, desafio);
+  }
 
     /**
      * Handle Http operation that failed.
