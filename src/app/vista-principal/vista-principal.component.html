@@ -8,10 +8,10 @@
             <div class="col-md-12">
                 <form>
                     <div class="row">
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-6">
                             <input type="text" #titulo class="form-control" id="exampleFormControlInput1" placeholder="Introduzca el titulo de su idea">
                         </div>
-                        <div class="col-md-9"></div>
+                        <div class="col-md-6"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-11">
@@ -42,9 +42,9 @@
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" >Me gusta</a>
-                    <a class="dropdown-item" >Comentarios</a>
-                    <a class="dropdown-item" >Antiguedad</a>
+                    <a class="dropdown-item">Me gusta</a>
+                    <a class="dropdown-item">Comentarios</a>
+                    <a class="dropdown-item">Antiguedad</a>
                 </div>
             </div>
             <form class="form-inline">
@@ -60,9 +60,15 @@
         <div class="container fluid ideas">
             <div *ngFor="let idea of ideas; let i = index">
                 <div class="row">
-                    <a href="#ideas-{{ i }}" class="btn btn-light btn-block d-flex flex-row" data-toggle="collapse">
-                        <p class="titulo">{{idea.titulo}}</p>
-                        <p class="nombre-ideador">[{{idea.nombreIdeador}}]</p>
+                    <a href="#ideas-{{ i }}" class="btn btn-light btn-block" data-toggle="collapse">
+                        <div class="row">
+                            <div class="col-md-8 d-flex flex-row">
+                                <p class="titulo">{{idea.titulo}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="nombre-ideador">[{{idea.nombreIdeador}}]</p>
+                            </div>
+                        </div>
                     </a>
                 </div>
                 <div class="collapse row" id="ideas-{{ i }}">
