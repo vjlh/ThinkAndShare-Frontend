@@ -43,6 +43,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatNativeDateModule, DateAdapter} from '@angular/material';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap';
 
@@ -64,7 +65,8 @@ import { BsModalRef } from 'ngx-bootstrap';
     HttpClientModule,
     MatExpansionModule,
     MatFormFieldModule,
-
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -83,18 +85,19 @@ import { BsModalRef } from 'ngx-bootstrap';
     MatGridListModule,
     MatCardModule,
     MatStepperModule,
-    MatTabsModule,        
+    MatTabsModule,
     MatExpansionModule,
     MatButtonToggleModule,
     MatChipsModule,
-    MatIconModule,      
-    ModalModule.forRoot(),
+    MatIconModule,
+    ModalModule.forRoot(), BrowserAnimationsModule,
   ],
 
   providers: [
     IdeaService,
     DesafioService,
-    BsModalRef
+    BsModalRef,
+    MatDatepickerModule,
   ],
   bootstrap: [AppComponent],
   entryComponents: [ IdeaComponent ]

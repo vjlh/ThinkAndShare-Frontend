@@ -11,7 +11,22 @@
                         <div class="form-group col-md-6">
                             <input type="text" #titulo class="form-control" maxlength="100" id="exampleFormControlInput1" placeholder="Introduzca el titulo de su desafio">
                         </div>
-                        <div class="col-md-6"></div>
+
+                        <div class="col-md-3">
+                            <mat-form-field>
+                                <input matInput [matDatepicker]="inicio" placeholder="Fecha de Inicio" (dateChange)="setStart($event)">
+                                <mat-datepicker-toggle matSuffix [for]="inicio"></mat-datepicker-toggle>
+                                <mat-datepicker #inicio></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-3">
+                            <mat-form-field>
+                                <input matInput [matDatepicker]="termino" placeholder="Fecha de Termino" (dateChange)="setFinish($event)">
+                                <mat-datepicker-toggle matSuffix [for]="termino"></mat-datepicker-toggle>
+                                <mat-datepicker #termino></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+
                     </div>
                     <div class="row">
                         <div class="col-md-11">
@@ -22,7 +37,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-11 d-flex flex-row-reverse">
-                            <button type="button" (click)="addDesafio(titulo.value,descripcion.value)"class="btn btn-danger">Publicar</button>
+                            <button type="button" (click)="add(titulo.value,descripcion.value)"class="btn btn-danger">Publicar</button>
                         </div>
                     </div>
                 </form>
@@ -103,14 +118,16 @@
                 <a href="#desafios-{{ i }}" class="btn btn-light btn-block" data-toggle="collapse">{{desafio.titulo}}</a>
             </div>
             <div class="collapse row" id="desafios-{{ i }}">
-                <div class="card card-body">
-                    {{desafio.descripcion}}
+                <div class="card card-body col-md-12">
+                    <p class="text-justify">{{desafio.descripcion}}</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Duracion: {{desafio.inicio}} - {{desafio.termino}}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </div>
-
-
-

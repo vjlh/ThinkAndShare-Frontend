@@ -46,3 +46,7 @@
   height: 20em;
   overflow-y: scroll;
 }
+
+.descripcion {
+    margin-bottom: 3em;
+}
