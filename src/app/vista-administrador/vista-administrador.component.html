@@ -19,7 +19,7 @@
                           </button>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item">Idea libre</a>
-                            <a class="dropdown-item"><option *ngFor="let desafio of desafios" #Desafio (ngModel)="Desafio" value={{desafio}}></option> </a>
+                            <a class="dropdown-item"><option *ngFor="let desafio of desafios" #Desafio ([ngModel])="Desafio" value={{desafio.titulo}}>{{desafio.titulo}}</option> </a>
                           </div>
                         </div>
                       </div>
