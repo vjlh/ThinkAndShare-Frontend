@@ -46,38 +46,3 @@
     height: 20em;
     overflow-y: scroll;
 }
-
-.descripcion-modal {
-    margin: 1em;
-    margin-bottom: 3em;
-}
-
-.icono-meGusta-modal {
-    color:  #bf0b25;
-    margin-left: 1em;
-}
-
-.meGusta-modal {
-    margin-left: 1em;
-}
-
-.boton-meGusta-modal {
-    margin-right: 1em;
-}
-
-.entrada-comentario-modal {
-    margin-left: 2em;
-}
-
-.boton-comentar-modal {
-    margin-right: 2em;
-}
-
-.comentarios {
-    height: 16em;
-    overflow-y: scroll;
-}
-
-.autor-comentario-modal {
-    color: #bf0b25;
-}

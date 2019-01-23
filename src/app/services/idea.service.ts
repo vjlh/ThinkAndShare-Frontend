@@ -4,7 +4,7 @@ import { of } from 'rxjs/observable/of';
 
 import { MessageService } from '../message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { PostIdea} from './idea';
 
 export interface Comentario{
   nombreIdeador: string;
@@ -17,6 +17,8 @@ export interface Idea {
     nombreIdeador: string;
     idDesafio: number;
     comentarios: Comentario[];
+    meGusta:number;
+    id:string;
 }
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -28,6 +30,7 @@ export class IdeaService {
   private ideasUrl = 'http://127.0.0.1:8080/api/ideas';
   private apiUrl = 'http://127.0.0.1:8080/api';
   private pliz = 'localhost:8080/api/5c3e4da9bf1b3e0eafe8d040/comentar';
+  public idSeleccionada: string;
 
   constructor(
     private http: HttpClient,
@@ -46,7 +49,7 @@ export class IdeaService {
     return this.http.get<Idea>(url); /*.pipe(catchError(<Idea>(`getIdea id=${id}`))
      );*/
   }
-  public addIdea (idea: Idea): Observable<Idea> {
+  public addIdea (idea: PostIdea): Observable<Idea> {
     return this.http.post<Idea>(this.ideasUrl, idea);
   }
 
@@ -69,6 +72,12 @@ export class IdeaService {
     const url = `${this.apiUrl}/ideas/ordenar/${criterio}`;
     return this.http.get(url);
 
+  }
+  public shareId(id:string){
+    this.idSeleccionada = id;
+  }
+  public getId(): string{
+    return this.idSeleccionada;
   }
 
   /**

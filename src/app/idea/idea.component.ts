@@ -1,8 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { Component, OnInit} from '@angular/core';
 import {Idea,Comentario, IdeaService }  from '../services/idea.service';
-
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-idea',
@@ -11,30 +9,30 @@ import {Idea,Comentario, IdeaService }  from '../services/idea.service';
 })
 export class IdeaComponent implements OnInit {
 
-  @Input() idea: Idea;
-  clickMessage = '';
+  idea: Idea;
+  id: string;
 
   constructor(
-    private route: ActivatedRoute,
     private ideaService: IdeaService,
-    private location: Location
+    public modalRef: BsModalRef,
   ) {}
 
   ngOnInit(): void {
     this.getIdea();
   }
-
   getIdea(): void {
-    const id = ""+this.route.snapshot.paramMap.get('id');
-    this.ideaService.getIdea(id)
-      .subscribe(idea => this.idea = idea);
-  }
-
-  goBack(): void {
-    this.location.back();
+    this.id = this.ideaService.getId();
+    this.ideaService.getIdea(this.id).subscribe(idea => this.idea = idea);
   }
 
   meGusta(idIdea:string):void {
-    this.ideaService.meGusta(idIdea).subscribe(idea => this.idea = idea);
+    this.ideaService.meGusta(idIdea).subscribe(idea => this.idea.meGusta = idea.meGusta);
+  }
+  addComentario(comentario:string, idIdea:string): void {
+    let nombreIdeador: string = "Percy";
+    comentario = comentario.trim();
+
+    if (!nombreIdeador || !comentario ) { return; }
+    this.ideaService.addComentario({nombreIdeador,comentario} as Comentario,idIdea).subscribe(idea => this.idea.comentarios = idea.comentarios);
   }
 }

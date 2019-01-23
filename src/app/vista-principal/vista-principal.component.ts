@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Idea, Comentario, IdeaService } from '../services/idea.service';
+import { Idea, IdeaService } from '../services/idea.service';
+import { IdeaComponent} from '../idea/idea.component';
 import { Desafio, DesafioService } from '../services/desafio.service';
+import {PostIdea} from '../services/idea';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
     selector: 'app-vista-principal',
@@ -14,39 +19,44 @@ export class VistaPrincipalComponent implements OnInit {
     desafios: Desafio[];
     index: 0;
     index2: 0;
+    modalRef: BsModalRef;
 
-    constructor(private ideaService: IdeaService, private desafioService: DesafioService) { }
+    constructor(private ideaService: IdeaService, private desafioService: DesafioService, private modalService: BsModalService) { }
 
     ngOnInit() {
         this.ideaService.getIdeas()
         .subscribe(ideas => this.ideas = ideas);
         this.desafioService.getDesafios()
         .subscribe(desafios => this.desafios = desafios);
-
     }
 
-    add(titulo: string, descripcion: string): void {
+    add(titulo: string, descripcion: string, idDesafio:string): void {
         titulo = titulo.trim();
         descripcion = descripcion.trim();
         let nombreIdeador: string = 'Autorcito';
-        let idDesafio:number=0;
+        idDesafio= idDesafio.trim();
+        
 
         if (!titulo || !descripcion ) { return; }
-        this.ideaService.addIdea({titulo,descripcion,idDesafio,nombreIdeador} as Idea)
+        this.ideaService.addIdea({titulo,descripcion,idDesafio,nombreIdeador} as PostIdea)
         .subscribe(idea => {
             this.ideas.push(idea);
         });
     }
-
-    meGusta(idIdea:string) {
-        this.ideaService.meGusta(idIdea).subscribe();
-        this.ideaService.getIdeas()
-        .subscribe(ideas => this.ideas = ideas);
+    meGusta(idIdea:string,Theidea:Idea) {
+        this.ideaService.meGusta(idIdea).subscribe(idea => {Theidea.meGusta = idea.meGusta});
     }
 
     filtrar(filtro:string){
-        this.ideaService.filter(filtro)
-        .subscribe(ideas => {this.ideas = ideas; console.log(this.ideas)});
+        if(filtro != ''){
+            this.ideaService.filter(filtro)
+            .subscribe(ideas => {this.ideas = ideas; console.log(this.ideas)});
+        }
+        else{
+            this.ideaService.getIdeas()
+            .subscribe(ideas => this.ideas = ideas);
+        }
+        
     }
 
     order(criterio:string){
@@ -66,16 +76,8 @@ export class VistaPrincipalComponent implements OnInit {
         });
     }
 
-    seleccionarIdea(idea: Idea): void {
-        this.idea = idea;
-        console.log(this.idea);
-    }
-
-    addComentario(comentario:string, idIdea:string): void {
-      let nombreIdeador: string = "Leandro";
-      comentario = comentario.trim();
-
-      if (!nombreIdeador || !comentario ) { return; }
-      this.ideaService.addComentario({nombreIdeador,comentario} as Comentario,idIdea).subscribe();
-    }
+    openModal(id:string){
+        this.ideaService.shareId(id);
+        this.modalRef = this.modalService.show(IdeaComponent);
+    }   
 }

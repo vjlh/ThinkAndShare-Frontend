@@ -1,6 +1,6 @@
-export class Idea {
+export class PostIdea {
     titulo: string;
     descripcion: string;
     nombreIdeador: string;
-    idDesafio: number;
+    idDesafio: string;
 }
