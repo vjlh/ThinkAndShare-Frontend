@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-12 publicar-idea">
+    <div class="col-md-12 publicar-desafio">
         <div class="row">
             <div class="col-md-4"><h4>Publica un desafío</h4></div>
             <div class="col-md-8"></div>
@@ -11,15 +11,14 @@
                         <div class="form-group col-md-6">
                             <input type="text" #titulo class="form-control" maxlength="100" id="exampleFormControlInput1" placeholder="Introduzca el titulo de su desafio">
                         </div>
-
-                        <div class="col-md-3">
+                        <div class="col-md-2 selector-fecha">
                             <mat-form-field>
                                 <input matInput [matDatepicker]="inicio" placeholder="Fecha de Inicio" (dateChange)="setStart($event)">
                                 <mat-datepicker-toggle matSuffix [for]="inicio"></mat-datepicker-toggle>
                                 <mat-datepicker #inicio></mat-datepicker>
                             </mat-form-field>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <mat-form-field>
                                 <input matInput [matDatepicker]="termino" placeholder="Fecha de Termino" (dateChange)="setFinish($event)">
                                 <mat-datepicker-toggle matSuffix [for]="termino"></mat-datepicker-toggle>
@@ -71,14 +70,15 @@
 <div class="col-md-6">
 
 </div>
+
 <div class="col-md-6 listado-ideas">
     <div class="container fluid ideas">
         <div *ngFor="let idea of ideas; let i = index">
             <div class="row">
                 <a href="#ideas-{{ i }}" class="btn btn-light btn-block" data-toggle="collapse">
                     <div class="row">
-                        <div class="col-md-8 d-flex flex-row">
-                            <p class="titulo">{{idea.titulo}}</p>
+                        <div class="col-md-8">
+                            <p class="titulo text-justify">{{idea.titulo}}</p>
                         </div>
                         <div class="col-md-4">
                             <p class="nombre-ideador">[{{idea.nombreIdeador}}]</p>
@@ -89,7 +89,7 @@
             <div class="collapse row" id="ideas-{{ i }}">
                 <div class="card card-body">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 text-justify">
                             {{idea.descripcion}}
                         </div>
                         <div class="col-md-12 separado">
@@ -115,10 +115,16 @@
     <div class="container fluid desafios">
         <div *ngFor="let desafio of desafios; let i = index">
             <div class="row">
-                <a href="#desafios-{{ i }}" class="btn btn-light btn-block" data-toggle="collapse">{{desafio.titulo}}</a>
+                <a href="#desafios-{{ i }}" class="btn btn-light btn-block" data-toggle="collapse">
+                    <div class="row">
+                        <div class="col-md-12 d-flex flex-row">
+                            <p class="titulo">{{desafio.titulo}}</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="collapse row" id="desafios-{{ i }}">
-                <div class="card card-body col-md-12">
+                <div class="card card-body">
                     <p class="text-justify">{{desafio.descripcion}}</p>
                     <div class="row">
                         <div class="col-md-12">

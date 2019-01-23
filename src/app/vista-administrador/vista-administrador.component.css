@@ -1,52 +1,52 @@
 /* VistaPrincipalAdministradorComponent's private CSS styles */
 
-.publicar-idea {
-  margin-top: 2em;
+.publicar-desafio {
+    margin-top: 2em;
 }
 
 .entrada-descripcion {
-  resize: none;
+    resize: none;
 }
 
 .formulario {
-  margin-top: 2em;
+    margin-top: 2em;
 }
 
 .listado-ideas {
-  margin-top: 2em;
+    margin-top: 2em;
 }
 
 .listado-desafios {
-  margin-top: 2em;
+    margin-top: 2em;
 }
 
 .separado {
-  margin-top: 1em;
+    margin-top: 1em;
 }
 
 .ideas {
-  height: 20em;
-  overflow-y: scroll;
-  overflow-x: hidden;
+    height: 20em;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .titulo {
-  margin-left: 1em;
+    margin-left: 1em;
 }
 
 .nombre-ideador {
-  color: #bf0b25;
+    color: #bf0b25;
 }
 
 .id-desafio {
-  margin-left: 8em;
+    margin-left: 8em;
 }
 
 .desafios {
-  height: 20em;
-  overflow-y: scroll;
+    height: 20em;
+    overflow-y: scroll;
 }
 
-.descripcion {
-    margin-bottom: 3em;
+.selector-fecha {
+    margin-right: 3em;
 }

@@ -7,9 +7,9 @@
         <div class="row formulario">
             <div class="col-md-12">
                 <form>
-                    <div class="row">
+                    <div class="row titulo-desafio">
                         <div class="form-group col-md-6">
-                            <input type="text" #titulo maxlength="100" class="form-control" id="exampleFormControlInput1" placeholder="Introduzca el titulo de su idea"> 
+                            <input type="text" #titulo maxlength="100" class="form-control" id="exampleFormControlInput1" placeholder="Introduzca el titulo de su idea">
                         </div>
                         <div class="form-group append-goup col-md-3">
                             <select class="form-control" #barra id="exampleFormControlSelect1">
@@ -62,14 +62,15 @@
     <div class="col-md-6">
 
     </div>
+
     <div class="col-md-6 listado-ideas">
         <div class="container fluid ideas">
             <div *ngFor="let idea of ideas; let i = index">
                 <div class="row">
                     <a href="#ideas-{{ i }}" class="btn btn-light btn-block" data-toggle="collapse">
                         <div class="row">
-                            <div class="col-md-8 d-flex flex-row">
-                                <p class="titulo">{{idea.titulo}}</p>
+                            <div class="col-md-8">
+                                <p class="titulo text-justify">{{idea.titulo}}</p>
                             </div>
                             <div class="col-md-4">
                                 <p class="nombre-ideador">[{{idea.nombreIdeador}}]</p>
@@ -80,7 +81,7 @@
                 <div class="collapse row" id="ideas-{{ i }}">
                     <div class="card card-body">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 text-justify">
                                 {{idea.descripcion}}
                             </div>
                             <div class="col-md-12 separado">
@@ -106,11 +107,22 @@
         <div class="container fluid desafios">
             <div *ngFor="let desafio of desafios; let i = index">
                 <div class="row">
-                    <a href="#desafios-{{ i }}" class="btn btn-light btn-block" data-toggle="collapse">{{desafio.titulo}}</a>
+                    <a href="#desafios-{{ i }}" class="btn btn-light btn-block" data-toggle="collapse">
+                        <div class="row">
+                            <div class="col-md-12 d-flex flex-row">
+                                <p class="titulo">{{desafio.titulo}}</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
                 <div class="collapse row" id="desafios-{{ i }}">
                     <div class="card card-body">
-                        {{desafio.descripcion}}
+                        <p class="text-justify">{{desafio.descripcion}}</p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Duracion: {{desafio.inicio}} - {{desafio.termino}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

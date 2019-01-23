@@ -15,6 +15,7 @@
 $angular-tour-of-heroes-primary: mat-palette($mat-amber);
 $angular-tour-of-heroes-accent: mat-palette($mat-lime);
 
+
 // The warn palette is optional (defaults to red).
 $angular-tour-of-heroes-warn: mat-palette($mat-red);
 
@@ -26,3 +27,19 @@ $angular-tour-of-heroes-theme: mat-light-theme($angular-tour-of-heroes-primary, 
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($angular-tour-of-heroes-theme);
+
+.mat-calendar-body-selected {
+    background-color: #bf0b25 !important;
+}
+
+.mat-datepicker-toggle-active {
+    color: #bf0b25 !important;
+}
+
+.mat-icon-button.cdk-focused.cdk-program-focused:focus {
+    outline-color: #bf0b25 !important;
+}
+
+.mat-form-field-infix {
+    padding: 0px;
+}

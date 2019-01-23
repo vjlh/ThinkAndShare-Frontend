@@ -42,6 +42,10 @@
     margin-left: 8em;
 }
 
+.titulo-desafio {
+    margin-bottom: 0.8em;
+}
+
 .desafios {
     height: 20em;
     overflow-y: scroll;
