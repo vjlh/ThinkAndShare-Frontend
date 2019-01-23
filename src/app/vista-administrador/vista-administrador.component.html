@@ -45,8 +45,19 @@
     </div>
 </div>
 
+<hr/>
+
+<div class="row titulos-listados">
+    <div class="col-md-6">
+        <h5>Listado de Ideas</h5>
+    </div>
+    <div class="col-md-6">
+        <h5>Listado de Desafios</h5>
+    </div>
+</div>
+
 <div class="row">
-<div class="col-md-6">
+<div class="col-md-6 filtros-orden">
     <nav class="navbar justify-content-between">
         <div class="btn-group">
             <button class="btn btn-secondary btn-sm" type="button">
@@ -56,7 +67,7 @@
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item"(click)="order(1)">Me gusta</a>
+                <a class="dropdown-item"(click)="order(1)">Me Gusta</a>
                 <a class="dropdown-item"(click)="order(2)">Comentarios</a>
                 <a class="dropdown-item"(click)="order(3)">Antiguedad</a>
             </div>
@@ -68,7 +79,23 @@
     </nav>
 </div>
 <div class="col-md-6">
-
+    <nav class="navbar justify-content-between">
+        <div class="btn-group">
+            <button class="btn btn-secondary btn-sm" type="button">
+                Ordenar por
+            </button>
+            <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item"(click)="order(1)">Antiguedad</a>
+            </div>
+        </div>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" #filtro placeholder="Ingrese un termino" aria-label="Search">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" (click)="filtrar(filtro.value);filtro.value=''">Filtrar</button>
+        </form>
+    </nav>
 </div>
 
 <div class="col-md-6 listado-ideas">

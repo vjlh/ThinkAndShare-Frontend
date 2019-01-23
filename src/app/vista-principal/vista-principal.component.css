@@ -1,7 +1,7 @@
 /* VistaPrincipalComponent's private CSS styles */
 
 .publicar-idea {
-    margin-top: 2em;
+    margin-top: 1em;
 }
 
 .entrada-descripcion {
@@ -9,15 +9,21 @@
 }
 
 .formulario {
+    margin-top: 1em;
+}
+
+.titulos-listados {
     margin-top: 2em;
+}
+
+.filtros-orden {
+    margin-bottom: 1em;
 }
 
 .listado-ideas {
-    margin-top: 2em;
 }
 
 .listado-desafios {
-    margin-top: 2em;
 }
 
 .separado {
@@ -25,7 +31,7 @@
 }
 
 .ideas {
-    height: 20em;
+    height: 17em;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -47,6 +53,6 @@
 }
 
 .desafios {
-    height: 20em;
+    height: 17em;
     overflow-y: scroll;
 }
