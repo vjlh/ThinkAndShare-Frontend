@@ -46,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatNativeDateModule, DateAdapter} from '@angular/material';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap';
+import { IdeaAdminComponent } from './idea-admin/idea-admin.component';
 
 
 
@@ -56,6 +57,7 @@ import { BsModalRef } from 'ngx-bootstrap';
     DesafioComponent,
     VistaPrincipalComponent,
     VistaAdministradorComponent,
+    IdeaAdminComponent,
   ],
   imports: [
     FormsModule,
@@ -100,7 +102,7 @@ import { BsModalRef } from 'ngx-bootstrap';
     MatDatepickerModule,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ IdeaComponent ]
+  entryComponents: [ IdeaComponent,IdeaAdminComponent ]
 
 
 })

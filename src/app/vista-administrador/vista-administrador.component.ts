@@ -3,7 +3,7 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 import { Idea, IdeaService } from '../services/idea.service';
 import { Desafio, DesafioService } from '../services/desafio.service';
-import { IdeaComponent} from '../idea/idea.component';
+import { IdeaAdminComponent} from '../idea-admin/idea-admin.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
@@ -85,7 +85,7 @@ export class VistaAdministradorComponent implements OnInit {
 
   openModal(id:string){
       this.ideaService.shareId(id);
-      this.modalRef = this.modalService.show(IdeaComponent);
+      this.modalRef = this.modalService.show(IdeaAdminComponent);
   }
 
   setStart(event: MatDatepickerInputEvent<Date>) {

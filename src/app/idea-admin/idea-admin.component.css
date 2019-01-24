@@ -1,0 +1,29 @@
+.descripcion-modal {
+    margin: 1em;
+}
+
+.icono-meGusta-modal {
+    color:  #bf0b25;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.boton-meGusta-modal {
+    margin-right: 1em;
+}
+
+.comentario {
+    margin-top: 0.4em;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 0.4em;
+}
+
+.comentarios {
+    height: 16em;
+    overflow-y: scroll;
+}
+
+.autor-comentario-modal {
+    color: #bf0b25;
+}
