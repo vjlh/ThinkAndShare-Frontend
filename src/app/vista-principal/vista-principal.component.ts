@@ -82,4 +82,15 @@ export class VistaPrincipalComponent implements OnInit {
         this.ideaService.shareId(id);
         this.modalRef = this.modalService.show(IdeaComponent);
     }
+    setIdea(idea:Idea){
+     let aux = 0;
+        let idDesafio = idea.idDesafio;
+        this.desafios.forEach(desafio => {
+            if (idDesafio == desafio.id)
+                this.nombreDesafio = desafio.titulo;
+                aux = 1;
+        });
+        if(aux ==0)
+            this.nombreDesafio = "Idea libre";
+    }
 }

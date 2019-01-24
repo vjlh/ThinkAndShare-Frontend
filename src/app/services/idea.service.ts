@@ -15,7 +15,7 @@ export interface Idea {
     titulo: string;
     descripcion: string;
     nombreIdeador: string;
-    idDesafio: number;
+    idDesafio: string;
     comentarios: Comentario[];
     meGusta:number;
     id:string;
