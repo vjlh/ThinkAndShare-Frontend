@@ -20,6 +20,7 @@ export class VistaAdministradorComponent implements OnInit {
   modalRef: BsModalRef;
   start: string;
   finish: string;
+  nombreDesafio:string;
 
 
   constructor(private ideaService: IdeaService, private desafioService: DesafioService, private modalService: BsModalService) { }
@@ -95,4 +96,14 @@ export class VistaAdministradorComponent implements OnInit {
   setFinish(event: MatDatepickerInputEvent<Date>) {
       this.finish = event.value.toLocaleString();
   }
+  setIdea(idea:Idea){
+    let aux:boolean = true;
+       let idDesafio = idea.idDesafio;
+       this.desafios.forEach(desafio => {
+           if (idDesafio == desafio.id){
+               this.nombreDesafio = desafio.titulo;
+               aux = false;
+           }
+       });
+    }
 }

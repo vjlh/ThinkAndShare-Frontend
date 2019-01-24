@@ -113,7 +113,7 @@
     <div class="container fluid ideas">
         <div *ngFor="let idea of ideas; let i = index">
             <div class="row">
-                <a href="#ideas-{{ i }}" class="btn btn-light btn-block" data-toggle="collapse">
+                <a href="#ideas-{{ i }}" class="btn btn-light btn-block" data-toggle="collapse" (click)="setIdea(idea)">
                     <div class="row">
                         <div class="col-md-8">
                             <p class="titulo text-justify">{{idea.titulo}}</p>
@@ -174,3 +174,4 @@
     </div>
 </div>
 </div>
+
