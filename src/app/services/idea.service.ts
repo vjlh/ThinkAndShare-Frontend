@@ -29,7 +29,6 @@ export class IdeaService {
   private ideaUrl = 'http://127.0.0.1:8080/api/idea';
   private ideasUrl = 'http://127.0.0.1:8080/api/ideas';
   private apiUrl = 'http://127.0.0.1:8080/api';
-  private pliz = 'localhost:8080/api/5c3e4da9bf1b3e0eafe8d040/comentar';
   public idSeleccionada: string;
 
   constructor(
@@ -37,18 +36,15 @@ export class IdeaService {
     private messageService: MessageService) { }
 
 
-  /** GET heroes from the server */
-  getIdeas (): Observable<any> {
+  public getIdeas (): Observable<any> {
     return this.http.get('//localhost:8080/api/ideas');
   }
 
-  /** idea by id. Will 404 if id not found */
-  getIdea(id: String): Observable<Idea> {
+  public getIdea(id: String): Observable<Idea> {
     const url = `${this.ideaUrl}/${id}`;
-
-    return this.http.get<Idea>(url); /*.pipe(catchError(<Idea>(`getIdea id=${id}`))
-     );*/
+    return this.http.get<Idea>(url);
   }
+
   public addIdea (idea: PostIdea): Observable<Idea> {
     return this.http.post<Idea>(this.ideasUrl, idea);
   }
