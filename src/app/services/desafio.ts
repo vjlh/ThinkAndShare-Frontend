@@ -1,4 +1,4 @@
-export class Desafio {
+export class PostDesafio {
     titulo: string;
     descripcion: string;
     inicio: string;

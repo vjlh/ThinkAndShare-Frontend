@@ -4,8 +4,10 @@ import { of } from 'rxjs/observable/of';
 
 import { MessageService } from '../message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { PostDesafio} from './desafio';
 
 export interface Desafio {
+  id: string;
   titulo: string;
   descripcion: string;
   inicio: string;
@@ -20,7 +22,8 @@ const httpOptions = {
 export class DesafioService {
     private desafioUrl = 'http://127.0.0.1:8080/api/desafio';
     private desafiosUrl = 'http://127.0.0.1:8080/api/desafios';
-      private apiUrl = 'http://127.0.0.1:8080/api';
+    private apiUrl = 'http://127.0.0.1:8080/api';
+    public idSeleccionada: string;
 
     constructor(
         private http: HttpClient,
@@ -41,7 +44,22 @@ export class DesafioService {
     }
     public addDesafio (desafio: Desafio): Observable<Desafio> {
       return this.http.post<Desafio>(this.desafiosUrl, desafio);
-  }
+    }
+
+    public filter2(filtro:string): Observable<any> {
+      const url = `${this.apiUrl}/desafios/filtrar/${filtro}`;
+      return this.http.get(url);
+
+    }
+    public order2(criterio:string): Observable<any> {
+      const url = `${this.apiUrl}/desafios/ordenar/${criterio}`;
+      return this.http.get(url);
+
+    }
+
+    public getId(): string{
+      return this.idSeleccionada;
+    }
 
     /**
      * Handle Http operation that failed.

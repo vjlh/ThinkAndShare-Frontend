@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Desafio } from '../services/desafio';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { DesafioService }  from '../services/desafio.service';
+import { Desafio, DesafioService }  from '../services/desafio.service';
 
 
 @Component({
@@ -12,8 +11,8 @@ import { DesafioService }  from '../services/desafio.service';
 })
 export class DesafioComponent implements OnInit {
 
-  @Input() desafio: Desafio;
-  clickMessage = '';
+  desafio: Desafio;
+  id: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,17 +25,8 @@ export class DesafioComponent implements OnInit {
   }
 
   getDesafio(): void {
-    const id = ""+this.route.snapshot.paramMap.get('id');
-    this.desafioService.getDesafio(id)
-      .subscribe(desafio => this.desafio = desafio);
-  }
-
-  goBack(): void {
-    this.location.back();
-  }
-
-  onClickMe() {
-    this.clickMessage = 'You are my desafio!';
+    this.id = this.desafioService.getId();
+    this.desafioService.getDesafio(this.id).subscribe(desafio => this.desafio = desafio);
   }
 
 }

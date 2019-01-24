@@ -36,7 +36,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-11 d-flex flex-row-reverse">
-                            <button type="button" (click)="add(titulo.value,descripcion.value)"class="btn btn-danger">Publicar</button>
+                            <button type="button" (click)="add(titulo.value,descripcion.value);titulo.value='';descripcion.value='';"class="btn btn-danger">Publicar</button>
                         </div>
                     </div>
                 </form>

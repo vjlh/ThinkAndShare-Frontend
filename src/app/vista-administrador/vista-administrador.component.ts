@@ -61,9 +61,26 @@ export class VistaAdministradorComponent implements OnInit {
 
   }
 
+  filtrar2(filtro:string){
+      if(filtro != ''){
+          this.desafioService.filter2(filtro)
+          .subscribe(desafios => {this.desafios = desafios; console.log(this.desafios)});
+      }
+      else{
+          this.desafioService.getDesafios()
+          .subscribe(desafios => this.desafios = desafios);
+      }
+
+  }
+
   order(criterio:string){
       this.ideaService.order(criterio)
       .subscribe(ideas => {this.ideas = ideas; console.log(this.ideas)});
+  }
+
+  order2(criterio:string){
+      this.desafioService.order2(criterio)
+      .subscribe(desafios => {this.desafios = desafios; console.log(this.desafios)});
   }
 
   openModal(id:string){
