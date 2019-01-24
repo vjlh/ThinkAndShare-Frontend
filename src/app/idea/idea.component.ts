@@ -29,7 +29,7 @@ export class IdeaComponent implements OnInit {
     this.ideaService.meGusta(idIdea).subscribe(idea => this.idea.meGusta = idea.meGusta);
   }
   addComentario(comentario:string, idIdea:string): void {
-    let nombreIdeador: string = "Percy";
+    let nombreIdeador: string = "Autor";
     comentario = comentario.trim();
 
     if (!nombreIdeador || !comentario ) { return; }

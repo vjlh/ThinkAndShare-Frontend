@@ -33,9 +33,9 @@ export class VistaPrincipalComponent implements OnInit {
     add(titulo: string, descripcion: string, idDesafio:string): void {
         titulo = titulo.trim();
         descripcion = descripcion.trim();
-        let nombreIdeador: string = 'Autorcito';
+        let nombreIdeador: string = 'Autor';
         idDesafio= idDesafio.trim();
-        
+
 
         if (!titulo || !descripcion ) { return; }
         this.ideaService.addIdea({titulo,descripcion,idDesafio,nombreIdeador} as PostIdea)
@@ -56,7 +56,7 @@ export class VistaPrincipalComponent implements OnInit {
             this.ideaService.getIdeas()
             .subscribe(ideas => this.ideas = ideas);
         }
-        
+
     }
 
     order(criterio:string){
@@ -79,5 +79,5 @@ export class VistaPrincipalComponent implements OnInit {
     openModal(id:string){
         this.ideaService.shareId(id);
         this.modalRef = this.modalService.show(IdeaComponent);
-    }   
+    }
 }
