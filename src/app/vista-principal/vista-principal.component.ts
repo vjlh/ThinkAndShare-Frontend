@@ -17,9 +17,11 @@ export class VistaPrincipalComponent implements OnInit {
     ideas: Idea[];
     idea: Idea;
     desafios: Desafio[];
+    nombreDesafio: string;
     index: 0;
     index2: 0;
     modalRef: BsModalRef;
+
 
     constructor(private ideaService: IdeaService, private desafioService: DesafioService, private modalService: BsModalService) { }
 

@@ -52,6 +52,10 @@
     margin-bottom: 0.8em;
 }
 
+.desafio-idea {
+    margin-bottom: 0.5em;
+}
+
 .desafios {
     height: 17em;
     overflow-y: scroll;

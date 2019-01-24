@@ -2,7 +2,18 @@
     <div class="col-md-12 publicar-idea">
         <div class="row">
             <div class="col-md-4"><h4>Publica una idea</h4></div>
-            <div class="col-md-8"></div>
+            <div class="col-md-6"></div>
+            <div class="col-md-2">
+                <div class="dropdown show">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Perfiles
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href="/home">Ideador</a>
+                      <a class="dropdown-item" href="/homeAdmin">Administrador</a>
+                  </div>
+                </div>
+            </div>
         </div>
         <div class="row formulario">
             <div class="col-md-12">
@@ -78,7 +89,7 @@
         <div class="container fluid ideas">
             <div *ngFor="let idea of ideas; let i = index">
                 <div class="row">
-                    <a href="#ideas-{{ i }}" class="btn btn-light btn-block" data-toggle="collapse">
+                    <a href="#ideas-{{ i }}" class="btn btn-light btn-block" data-toggle="collapse" (click)="setIdea(idea)">
                         <div class="row">
                             <div class="col-md-8">
                                 <p class="titulo text-justify">{{idea.titulo}}</p>
@@ -92,6 +103,9 @@
                 <div class="collapse row" id="ideas-{{ i }}">
                     <div class="card card-body">
                         <div class="row">
+                            <div class="col-md-12 d-flex flex-row-reverse desafio-idea">
+                                <span class="badge badge-secondary">{{nombreDesafio}}</span>
+                            </div>
                             <div class="col-md-12 text-justify">
                                 {{idea.descripcion}}
                             </div>
